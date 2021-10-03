@@ -1,0 +1,113 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{PHYS 474 Group Project Ideas}
+\author{A. Katil, G. Ko, M.J. Klys}
+\date{October 2021}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Galaxy structure with strong gravitational lensing: decomposing the internal mass distribution of massive elliptical galaxies}
+
+\subsection{Abstract}
+\begin{itemize}
+    \item Test contemporary models of massive elliptical(ME) galaxy formation using gravitational lensing by combining traditional decomposition. 
+    \item Studying three ME lenses shows that they are composed of two distinct baryonic structures - 1)'Red Central Bulge 2)extended envelope of stellar material.
+    \item distinct lensing effects permit a clean decomposition of their mass structure.
+    \item Tells us information about 1) stellar mass info 2) inner dark matter halo mass.
+    \item stellar mass profile  provides a diagnostic of baryonic accretion and feedback.
+    \item dark matter mass places each galaxy in the context of LCDM(Lambda - Cold Dark Matter) large scale structure formation.
+    \item Detect lopsidedness in their outer mass distributions and offset between two stellar components. These provide further information on the evolution of each ME.
+    \item Extending to galaxies of all hubble types and what implications the results have for our results have for studies of strong gravitational lensing.
+\end{itemize}
+
+
+\subsection{Data Reduction and Lens Sample}
+\subsubsection{Data Reduction}
+The following is the software mentioned
+
+\begin{itemize}
+    \item arCTIc software (Massey et al. 2010; 2014)
+    \item calacs
+    \item astrodrizzle
+    \item TinyTim?
+\end{itemize}
+
+\subsubsection{Lens Sample}
+
+The preliminary sample of three lenses used in this work is taken from the Sloan Lens ACS Survey (SLACS,e.g. Bolton et al. 2008). The SLACS lens galaxies therefore primarily consist of ME galaxies with no known differences to other similar galaxies in the main or LRG parent samples (e.g. Bolton et al. 2006; Treu et al. 2009), other than a bias towards higher total mass
+
+
+\subsection{Method}
+
+To perform this analysis we use our new lens modeling software PyAutoLens, which is described in Nightingale, Dye & Massey (2018, N18 hereafter), building on the
+works of Warren & Dye (2003, WD03 hereafter), Suyu et al. (2006, S06 hereafter) and Nightingale & Dye (2015, N15
+hereafter). We refer readers to these works for a full description of PyAutoLens. Key points to note are:
+(i) the lens galaxy’s light and mass distributions are fitted
+simultaneously;
+(ii) the source’s surface brightness distribution is reconstructed on an adaptive pixel-grid (see the right column of
+figure 1);
+(iii) the Bayesian framework of S06 is used to objectively
+determine the most probable source reconstruction, and the
+complexity of the lens model is also chosen objectively via
+Bayesian model comparison (using MultiNest; Feroz, Hobson & Bridges 2009; Park et al. 2018);
+(iv) the method is fully automated and requires no user
+intervention (after a brief initial setup) for the analysis presented in this work.
+
+
+\subsection{Summary}
+
+\begin{itemize}
+    \item Fitting three strong graviational lenses with the lens modelling software \textbf{PyAutoLens}. 
+    \item Each system compared with two models - 1) A total mass model, where the lens galaxy's structure is inferred independently from strong lensing. 2) A decomposed mass model, where the lens galaxy' structure is folded into lensing analasis and thus constrained by it.
+    \item All three lens galaxies were ME. Each is structurally composed of two components. The two component model was preferred, irrespective of whether lensing constraints were used.
+    \item Lensing enabled us to measure two quantities that a photometric only analysis cannot - i.e. stellar mass distribution and inner dark matter halo mass of each galaxy.
+    \item The central components are consistent with a central ‘red nugget’ (e.g. Trujillo et al. 2006; Oldham et al.2017) formed at high redshift (z > 2) due to a highly dissipative event, as evidenced by their structural parameters (high Sersic index, low effective radius).
+    \item The outer components are extended envelopes of material (low Sersic index, high effective radius) accreted via mergers from redshift 2 onwards.
+    \item 3 Objects not a rigorous test of ME formation but the underlying theory will help understading the evolution of ME galxies in the future.
+    \item strong lensing provides a new test of ME formation, especially given recent theoretical works highlighting correlations between halo mass and stellar density profile
+    \item Stellar mass profile and halo mass are rotationally offset. Suggests that the central region changes its orientation relative to its surrounding local environment(outer envelope).
+    \item Lopsidedness detected - provides info on when last episode of significant accretion took place, by challenging.
+    \item \textbf{Analysis not limited to ME galaxies}.
+    \item Direct measurements of a galaxy’s host dark matter halo are crucial to understanding each galaxy’s place in hierarchical structure formation.
+    \item stellar density profiles provide insight into the role baryonic physics has in shaping each galaxy
+\end{itemize}
+
+\subsection{Comments - Katil}
+
+Project seems do-able. We have access to the statistics tools and code for the analysis.Links can be found in comments. The data is taken from Sloan Lens ACS Survey, again I included the link in the comments, but I am unsure if the data can be directly used from the paper referenced.
+
+The project also has a scope for improvement as the authors mentioned towards the end of the summary section. Particularly, can we use this for any more galaxies not just elliptical but spiral and irregular types? Data from any other surveys.
+
+Can we get the shape of dark matter halos, in this paper they only find the structure of the dark matter halos? Can we do the same analysis for galaxy clusters?
+
+
+\section{The Close AGN Reference Survey (CARS)
+Comparative analysis of the structural properties of star-forming
+and non-star-forming galaxy bars}
+
+\subsection{Abstract}
+
+\begin{itemize}
+    \item Absence of star formation in bar region explained by shear.
+    \item Not clear how star-forming(SF) bars fit into the picture and how the dynamical state of the bar is related to properties of host galaxy.
+    \item used integral-field spectroscopy from VLT/MUSE to investigate how star formation within bars is connected to structural properties of the bar and the host galaxy
+    \item derived spatially resolved Hα fluxes from MUSE observations from the CARS survey to estimate star formation rates in the bars of 16 nearby disc galaxies.
+    \item performed a detailed multicomponent photometric decomposition on images derived from the data cubes.
+    \item clear distinction between SF and non SF bars.
+    \item The star formation of the bar appears to be linked to the flatness of the surface brightness profile in the sense that only the flattest bars
+    \item Star formation is 1.75 times stronger on the leading than on the trailing edge and is radially decreasing
+    \item conditions to host non-SF bars might be connected to the presence of inner rings.
+    \item  star formation rate of the bar is uncorrelated with AGN bolometric luminosity.
+    \item The results of this study may only apply to type-1 AGN hosts and need to be confirmed for the full population of barred galaxies.
+\end{itemize}
+
+\subsection{Comments - Katil}
+
+Feel free to look up the paper if you are interested. I personally liked the gravitational lensing idea more.
+
+\end{document}
