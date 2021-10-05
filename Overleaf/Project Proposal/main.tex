@@ -1,21 +1,60 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 
-\title{'Title'}
+% Bibliography
+
+\RequirePackage[
+    backend=biber,
+    style=numeric-comp,
+    sorting=none,
+    maxbibnames=99,
+    backref=true
+]{biblatex}
+
+\DefineBibliographyStrings{english}{
+    backrefpage = {page},
+    backrefpages = {pages}
+}
+
+\DefineBibliographyStrings{french}{
+    backrefpage = {page},
+    backrefpages = {pages}
+}
+
+
+\title{Galaxy Structure with strong gravitational lensing}
 \author{Akanksha Katil, Michael Jan Klys, Graeme Ko}
 \date{\today}
+
+\addbibresource{Overleaf/Project Proposal/references.bib}
 
 \begin{document}
 
 \maketitle
 
 \section{Intro}
+Information regarding projected and extended view of gravitational potential of an extended source can be acquired when the source is gravitationally lensed. This is possible because light emitted from different regions of the source galaxy traces different paths.\cite{Nightingale_2019}
 
 
-
-\section{data}
+\section{Data}
 
 
 \section{Method}
 
+The imaging from HST/Advanced Camera Surveys(ACS) of selected galaxies from Sloan Lens ACS Survey\cite{bolton2008sloan} are fit with the models using PyAutoLens\cite{Nightingale_2021}. 
+
+PyAutoLens, specially developed for strong lensing, fits the light and mass distribution of lens galaxy. The light from the lens galaxy is subtracted to reconstruct the surface brightness of the source galaxy /\cite{Nightingale_2021}. 
+
+Two independent approaches are chosen for lens modelling\cite{Nightingale_2019}.
+
+\begin{itemize}
+    \item Total Mass model - Stellar and dark matter mass are used. The fit to surface photometry is used to constrain the lens galaxy's light profile\cite{Nightingale_2019}.
+    \item Decomposed Mass Model - Mass split into stellar and dark matter. Both the fit to the lens galaxy's light and strong lensing analysis will constrain the lens's light profile. Sersic type profiles are assumed for the stellar mass, whereas for the dark matter Navarro-Frenk-White profile is used\cite{Nightingale_2019}.
+\end{itemize}
+
+The results from both the models emphasize the value of the decomposed mass model. With the decomposed mass model not only is the mass of the stellar and dark matter components found but also the rotational offset and the lopsidedness in the mass components are estimated.
+
+\newpage
+
+\printbibliography
 \end{document}
