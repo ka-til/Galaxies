@@ -33,7 +33,11 @@
 \maketitle
 
 \section{Intro}
-Information regarding projected and extended view of gravitational potential of an extended source can be acquired when the source is gravitationally lensed. This is possible because light emitted from different regions of the source galaxy traces different paths.\cite{Nightingale_2019}
+
+This report will attempt to map the distribution of inner dark matter mass and stellar mass within galaxies. The information will be analyzed from galaxies involved in strong gravitational lensing, using the methodology outlined in the paper “Galaxy Structure with Strong Gravitational Lensing: Decomposing the Internal Mass Distribution of Massive Elliptical Galaxies” by James W. Nightingale et al. \cite{Nightingale_2019}. The results of that paper will attempt to be recreated and, data permitting, the analysis will be extended to new target galaxies as well. 
+
+Information regarding projected and extended views of gravitational potential of an extended source can be acquired when the source is gravitationally lensed. This is possible because light emitted from different regions of the source galaxy traces different paths. The mass and light profiles based on this data may be useful for assessing galactic evolutionary models. In particular, the results of the investigation may be of use for examining a galaxy with respect to lambda cold dark matter theory and baryonic accretion and feedback while reducing uncertainties due to dust. \cite{Nightingale_2019} 
+
 
 
 \section{Data}
@@ -43,7 +47,7 @@ Information regarding projected and extended view of gravitational potential of 
 
 The imaging from HST/Advanced Camera Surveys(ACS) of selected galaxies from Sloan Lens ACS Survey\cite{bolton2008sloan} are fit with the models using PyAutoLens\cite{Nightingale_2021}. 
 
-PyAutoLens, specially developed for strong lensing, fits the light and mass distribution of lens galaxy. The light from the lens galaxy is subtracted to reconstruct the surface brightness of the source galaxy /\cite{Nightingale_2021}. 
+PyAutoLens, specially developed for strong lensing, fits the light and mass distribution of a lens galaxy. The light from the lens galaxy is subtracted to reconstruct the surface brightness of the source galaxy \cite{Nightingale_2021}. 
 
 Two independent approaches are chosen for lens modelling\cite{Nightingale_2019}.
 
@@ -52,7 +56,7 @@ Two independent approaches are chosen for lens modelling\cite{Nightingale_2019}.
     \item Decomposed Mass Model - Mass split into stellar and dark matter. Both the fit to the lens galaxy's light and strong lensing analysis will constrain the lens's light profile. Sersic type profiles are assumed for the stellar mass, whereas for the dark matter Navarro-Frenk-White profile is used\cite{Nightingale_2019}.
 \end{itemize}
 
-The results from both the models emphasize the value of the decomposed mass model. With the decomposed mass model not only is the mass of the stellar and dark matter components found but also the rotational offset and the lopsidedness in the mass components are estimated.
+The results emphasize the value of the decomposed mass model. With the decomposed mass model not only is the mass of the stellar and dark matter components measured but also the rotational offset and the lopsidedness in the mass components are estimated.
 
 \newpage
 
