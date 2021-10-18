@@ -18,8 +18,8 @@ Now installing PyAutoLens
 6) If installed run '''pip install autolens==2021.10.14.1 --ignore-installed numba llvmlite'''.
 
 Installing autolens workspace
-11) '''cd /path/on/your/computer/you/want/to/put/the/autolens_workspace'''.
-12) '''git clone https://github.com/Jammy2211/autolens_workspace --depth 1'''.
+1) '''cd /path/on/your/computer/you/want/to/put/the/autolens_workspace'''.
+2) '''git clone https://github.com/Jammy2211/autolens_workspace --depth 1'''.
 
 Note: Better not to clone the repository into Galaxies repository
 
