@@ -26,3 +26,23 @@ Note: Better not to clone the repository into Galaxies repository
 Testing PyAutoLens Installation
 1) Run '''python welcome.py'''
 2) If PyAutoLens is succesfully installed 4 plots appear.
+
+## Basic Git commands
+1) '''git clone <repository https>''' cloning the repository
+2)'''git add <file/folder name>''' adds file to git staging area
+3)'''git commit -m '<message for the commit>' ''' captures the snapshot of the project's currently staged changes
+4)'''git push origin <branch name>''' push local contents to github.
+
+### Creating SSH keys
+
+1) Run '''ssh-keygen -t rsa -b 4096 -C "<your git email id>" ''' in repository folder
+2) press enter key (now ssh key will be saved in path specified)
+3) enter your passphrase (remember this to push the changes into the repository)
+4) cat /path/to/ssh/key/.ssh/id_rsa.pub and copy the content
+5) go to https://github.com/settings/keys and create a new key
+6) Run '''ssh -T git@github.com''' and type yes when prompted.
+7) Run '''git remote set-url origin git@github.com:<username>/<repository name>.git'''
+
+##Bookeeping
+
+Add descriptions to the files/folders you are adding to the repo
