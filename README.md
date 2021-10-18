@@ -32,7 +32,7 @@ Testing PyAutoLens Installation
 2) '''git add (file/folder name)''' adds file to git staging area.
 3) '''git commit -m '(message for the commit)' ''' captures the snapshot of the project's currently staged changes.
 4) '''git push origin (branch name)''' push local contents to github.
-
+5) '''git pull''' update local version of repository.
 ### Creating SSH keys
 
 1) Run '''ssh-keygen -t rsa -b 4096 -C "(your git email id)" ''' in repository folder
