@@ -4,7 +4,7 @@ Group project for galaxies course
 ## Installation with conda taken from https://pyautolens.readthedocs.io/en/latest/installation/conda.html
 
 Pre-req: Install Anaconda Navigator(anaconda3) before running the following steps.
-1) Open Anaconda prompt in Windows 10 (This step changes depending on the software)
+1) Open Anaconda prompt in Windows 10 (This step changes depending on the OS)
 2) Run '''conda --version'''
 3) Run '''conda update conda''' (The latest version is 4.10.3)
 4) Type y (if new update is available)
