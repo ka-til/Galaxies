@@ -1,6 +1,6 @@
 # Files from Akanksha
 
-## Installation with conda 
+## Installation with conda
 Taken from https://pyautolens.readthedocs.io/en/latest/installation/conda.html
 Pre-req: Install Anaconda Navigator(anaconda3) before running the following steps.
 1) Open Anaconda prompt in Windows 10 (This step changes depending on the OS)
@@ -35,10 +35,11 @@ Testing PyAutoLens Installation
 
 ## Basic Git commands
 1) '''git clone (repository https)''' cloning the repository.
-2) '''git add (file/folder name)''' adds file to git staging area.
-3) '''git commit -m '(message for the commit)' ''' captures the snapshot of the project's currently staged changes.
-4) '''git push origin (branch name)''' push local contents to github.
-5) '''git pull''' update local version of repository.
+2) '''git status''' current status of local repository
+3) '''git add (file/folder name)''' adds file to git staging area.
+4) '''git commit -m '(message for the commit)' ''' captures the snapshot of the project's currently staged changes.
+5) '''git push origin (branch name)''' push local contents to github.
+6) '''git pull''' update local version of repository.
 
 ### Creating SSH keys
 1) Run '''ssh-keygen -t rsa -b 4096 -C "(your git email id)" ''' in repository folder
