@@ -49,6 +49,7 @@ Testing PyAutoLens Installation
 5) go to https://github.com/settings/keys and create a new key
 6) Run '''ssh -T git@github.com''' and type yes when prompted.
 7) Run '''git remote set-url origin git@github.com:(username)/(repository name).git'''
+<<<<<<< HEAD
 
 ## Finding Data
 
@@ -78,3 +79,5 @@ https://www.stsci.edu/itt/review/DrizzlePac/HTML/DrizzlePac.cover.html#533584
 
 https://www.stsci.edu/files/live/sites/www/files/home/hst/instrumentation/focus-and-pointing/documentation/_documents/krist_tinytim_spie.pdf
 https://github.com/spacetelescope/tinytim
+=======
+>>>>>>> 8d55828d5a385e32a7c14b1f43c9b1cda96940cd

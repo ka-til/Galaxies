@@ -6,7 +6,10 @@
 2021-10-25 13:41:19,453 - autoconf.conf - WARNING - No configuration found at path C:\Users\akank\OneDrive - University of Waterloo\Fall 2021 Courses\PHYS 474\Submissions\Galaxies\Akanksha\config
 2021-10-25 13:41:19,538 - autoconf.conf - WARNING - Pushing new config with path C:\Users\akank\anaconda3\envs\autolens\lib\site-packages\autolens\config
 2021-10-25 13:41:19,742 - autoconf.conf - WARNING - No configuration found at path C:\Users\akank\OneDrive - University of Waterloo\Fall 2021 Courses\PHYS 474\Submissions\Galaxies\Akanksha\config
+<<<<<<< HEAD
 2021-10-30 18:09:55,232 - autoconf.conf - WARNING - Pushing new config with path C:\Users\akank\anaconda3\envs\autolens\lib\site-packages\autogalaxy\config
 2021-10-30 18:09:55,724 - autoconf.conf - WARNING - No configuration found at path C:\Users\akank\OneDrive - University of Waterloo\Fall 2021 Courses\PHYS 474\Submissions\Galaxies\Akanksha\config
 2021-10-30 18:09:55,990 - autoconf.conf - WARNING - Pushing new config with path C:\Users\akank\anaconda3\envs\autolens\lib\site-packages\autolens\config
 2021-10-30 18:09:56,609 - autoconf.conf - WARNING - No configuration found at path C:\Users\akank\OneDrive - University of Waterloo\Fall 2021 Courses\PHYS 474\Submissions\Galaxies\Akanksha\config
+=======
+>>>>>>> 8d55828d5a385e32a7c14b1f43c9b1cda96940cd
