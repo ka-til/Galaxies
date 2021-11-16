@@ -91,14 +91,14 @@ Steps
 
 1) ./tiny1 outfilename [jitter=4 mas] taken from https://www.stsci.edu/files/live/sites/www/files/home/hst/instrumentation/acs/documentation/instrument-science-reports-isrs/_documents/isr1708.pdf
 
--For object - SDSSJ0252+0039
--Instrument and camera - 15
--Detector - 1(WFC1)
--Position - 2194, 3178(Graeme) --- after correction y-coordinate is 1130 [ 2048 - (2*2048 - 3178)]
--Filter - F814W
--Spectrum - 1 - 7(A07) (Not sure what value to put in, will change later on)
--PSF Diameter - 3.0
--Focus, secondary mirror despace - -0.7765668337488701 (Focus model - https://www.stsci.edu/hst/instrumentation/focus-and-pointing/focus/hst-focus-model for 2006,
+a) For object - SDSSJ0252+0039
+b) Instrument and camera - 15
+c) Detector - 1(WFC1)
+d) Position - 2194, 3178(Graeme) --- after correction y-coordinate is 1130 [ 2048 - (2*2048 - 3178)]
+e) Filter - F814W
+f) Spectrum - 1 - 7(A07) (Not sure what value to put in, will change later on)
+g) PSF Diameter - 3.0
+h) Focus, secondary mirror despace - -0.7765668337488701 (Focus model - https://www.stsci.edu/hst/instrumentation/focus-and-pointing/focus/hst-focus-model for2006,
                                                        Modified Julian Date converter - https://www.timeanddate.com/calendar/?year=2006&country=23
                                                        Value calculated in InterpolatingFocus.ipynb)
 -Root File name - outfilename
