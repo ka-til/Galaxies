@@ -91,18 +91,18 @@ Steps
 
 1) ./tiny1 outfilename [jitter=4 mas] taken from https://www.stsci.edu/files/live/sites/www/files/home/hst/instrumentation/acs/documentation/instrument-science-reports-isrs/_documents/isr1708.pdf
 
-For object - SDSSJ0252+0039
-Instrument and camera - 15
-Detector - 1(WFC1)
-Position - 2194, 3178(Graeme) --- after correction y-coordinate is 1130 [ 2048 - (2*2048 - 3178)]
-Filter - F814W
-Spectrum - 1 - 7(A07) (Not sure what value to put in, will change later on)
-PSF Diameter - 3.0
-Focus, secondary mirror despace - -0.7765668337488701 (Focus model - https://www.stsci.edu/hst/instrumentation/focus-and-pointing/focus/hst-focus-model for 2006,
+-For object - SDSSJ0252+0039
+-Instrument and camera - 15
+-Detector - 1(WFC1)
+-Position - 2194, 3178(Graeme) --- after correction y-coordinate is 1130 [ 2048 - (2*2048 - 3178)]
+-Filter - F814W
+-Spectrum - 1 - 7(A07) (Not sure what value to put in, will change later on)
+-PSF Diameter - 3.0
+-Focus, secondary mirror despace - -0.7765668337488701 (Focus model - https://www.stsci.edu/hst/instrumentation/focus-and-pointing/focus/hst-focus-model for 2006,
                                                        Modified Julian Date converter - https://www.timeanddate.com/calendar/?year=2006&country=23
                                                        Value calculated in InterpolatingFocus.ipynb)
+-Root File name - outfilename
 
-Root File name - outfilename
 2) ./tiny2 outfilename
 3) ./tiny2 outfilename option_parameter_file(.tt3 from tiny2)
 
@@ -116,22 +116,14 @@ the appropriate wavelengths for the band), we determined the focus position for 
 interpolated (second and fourth shape moments of) the TinyTim PSF model to the position of the galaxies,
 rotating into the reference frame of the MultiDrizzle mosaic" - taken from https://arxiv.org/pdf/1503.07675.pdf
 
-2) How do you know where the peak is?
-
-3) How is WFC1 different from WFC2??
-
 4) What should be the subsampling value
 
 5) Spectrum value?
 
-6) Produce for how many pixels? The PSF diameter is 3 arcseconds - our galaxy lens is about 3 arcseconds?
-
 Work left
 
-1) Include focusing
 2) covolution with image - https://het.as.utexas.edu/HET/Software/Astropy-0.4.2/convolution/index.html
 
-Covolution
 
 #### For ACS
 
