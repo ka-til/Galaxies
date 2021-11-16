@@ -79,5 +79,83 @@ https://www.stsci.edu/itt/review/DrizzlePac/HTML/DrizzlePac.cover.html#533584
 
 https://www.stsci.edu/files/live/sites/www/files/home/hst/instrumentation/focus-and-pointing/documentation/_documents/krist_tinytim_spie.pdf
 https://github.com/spacetelescope/tinytim
-=======
->>>>>>> 8d55828d5a385e32a7c14b1f43c9b1cda96940cd
+
+
+Installation
+
+1) Install make
+2) Install gcc
+3) Follow steps from manual - under compiling
+
+Steps
+
+1) ./tiny1 outfilename [jitter=4 mas] taken from https://www.stsci.edu/files/live/sites/www/files/home/hst/instrumentation/acs/documentation/instrument-science-reports-isrs/_documents/isr1708.pdf
+
+For object - SDSSJ0252+0039
+Instrument and camera - 15
+Detector - 1(WFC1)
+Position - 2194, 3178(Graeme) --- after correction y-coordinate is 1130 [ 2048 - (2*2048 - 3178)]
+Filter - F814W
+Spectrum - 1 - 7(A07) (Not sure what value to put in, will change later on)
+PSF Diameter - 3.0
+Focus, secondary mirror despace - -0.7765668337488701 (Focus model - https://www.stsci.edu/hst/instrumentation/focus-and-pointing/focus/hst-focus-model for 2006,
+                                                       Modified Julian Date converter - https://www.timeanddate.com/calendar/?year=2006&country=23
+                                                       Value calculated in InterpolatingFocus.ipynb)
+
+Root File name - outfilename
+2) ./tiny2 outfilename
+3) ./tiny2 outfilename option_parameter_file(.tt3 from tiny2)
+
+
+1) Get a focus model, including it with tinytim should be easy. But what model should we use, the 2011 paper discusses using focus model. But the paper we are using states the following procedure.
+
+"We first identified stars in the deep, stacked image using their locus in size–magnitude space.
+We then measured the ellipticity of each star in individual exposures. By comparing these to TinyTim (46)
+models of the HST PSF (created by raytracing through the telescope at different focus positions but at
+the appropriate wavelengths for the band), we determined the focus position for each exposure. We then
+interpolated (second and fourth shape moments of) the TinyTim PSF model to the position of the galaxies,
+rotating into the reference frame of the MultiDrizzle mosaic" - taken from https://arxiv.org/pdf/1503.07675.pdf
+
+2) How do you know where the peak is?
+
+3) How is WFC1 different from WFC2??
+
+4) What should be the subsampling value
+
+5) Spectrum value?
+
+6) Produce for how many pixels? The PSF diameter is 3 arcseconds - our galaxy lens is about 3 arcseconds?
+
+Work left
+
+1) Include focusing
+2) covolution with image - https://het.as.utexas.edu/HET/Software/Astropy-0.4.2/convolution/index.html
+
+Covolution
+
+#### For ACS
+
+https://www.stsci.edu/files/live/sites/www/files/home/hst/instrumentation/focus-and-pointing/documentation/_documents/tinytim.pdf
+
+Because of the significant distortion in the ACS, the way Tiny Tim computes ACS PSFs is
+somewhat different than for the other cameras. This includes the use of a third program, tiny3, that
+does geometric distortion
+
+ACS is composed of three channels. The wide field channel (WFC:f/26, 0.05”/pixel) has two 4096 × 2048 CCD
+detectors for λ = 400 – 1100 nm imaging. The high resolution channel (HRC:f/72, 0.025”/pixel) has a single 1024 ×
+1024 CCD for λ = 170 – 1000 nm imaging. The solar blind channel (SBC:f/72, 0.030”/pixel) uses a STIS-like MAMA
+detector for λ = 115 – 170 nm imaging, and it shares the HRC optical train and field of view (an actuated mirror selects
+the detector). WFC and HRC/SBC image separate portions of the HST focal plane. The HRC is no longer in operation
+due to an electronic failure. That channel also had a selectable coronagraphic mode (occulted sources are not simulated
+by Tiny Tim, though field sources are by including the Lyot stop in the obscuration pattern).
+
+### PSF
+
+https://www.stsci.edu/hst/instrumentation/wfc3/data-analysis/psf
+
+ACS - https://www.stsci.edu/itt/APT_help/ACS_Cycle21/c05_imaging7.html
+
+
+### Focus model
+
+https://www.stsci.edu/hst/instrumentation/focus-and-pointing/focus/hst-focus-model
