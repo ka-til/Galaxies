@@ -29,7 +29,7 @@ class data_reduction(object):
         self.filepath=filepath
         self.filename=filename
 
-        self.hdul=fits.open(self.filepath+self.filename)
+        self.hdul=fits.open(self.filepath+self.filename+'.fits')
             #self.hdul.verify('fix')
 
         #Choosing the data header, usually header[1]
@@ -134,6 +134,16 @@ class data_reduction(object):
 
         return
 
+    def noise_map(self):
+        '''
+        Function generates a noise map
+        '''
+
+        mean_snr = self.hdul['SCI'].header['SNRMEAN']
+        poisson_dist = self.hdul[1].data/np.random.poisson((self.hdul['SCI'].header['SNRMEAN']), self.hdul[1].data.shape)
+
+        return poisson_dist
+
     def convolve(self, psffile='psffile'):
         '''
         Function convolves the HST image with PSF
@@ -160,29 +170,56 @@ class data_reduction(object):
         1) Append the convolved image
         2) Overwrite the cropped data
         '''
+        self.noise_map_data=self.noise_map()
+        self.image_data=self.hdul[1].data
 
+        #appending noise map to the fits file
+        self.noise_map_ImageHDU = fits.ImageHDU(name='NMAP', data=self.noise_map_data)
+        self.hdul.append(self.noise_map_ImageHDU)
+
+        #appending PSF to the fits file
+        self.psf_ImageHDU = fits.ImageHDU(name='PSF', data=self.psf_data)
+        self.hdul.append(self.psf_ImageHDU)
+
+        #appending Covolve to the fits file
         self.convolve_ImageHDU = fits.ImageHDU(name='CONVOLVE', data=self.convolved_data)
         self.hdul.append(self.convolve_ImageHDU)
 
         self.hdul.writeto(outfilepath + self.filename + '_cropped_convolved.fits',overwrite=True)
 
+        hdu_image = fits.PrimaryHDU(data=self.image_data)
+        hdu_image.writeto(outfilepath+'imaging.fits')
+
+        hdu_noise = fits.PrimaryHDU(data=self.noise_map_data)
+        hdu_noise.writeto(outfilepath+'noise_map.fits')
+
+        hdu_psf = fits.PrimaryHDU(data=self.psf_data)
+        hdu_psf.writeto(outfilepath+'psf.fits')
+
         self.hdul.close()
+
         return
 
-    def plot_images(self, cropped_image=True, psf=True, convolve=True):
+    def plot_images(self, cropped_image=True, noise_map=True, psf=True, convolve=True, outfilepath='outfilepath'):
         '''
         plot images
 
         cropped_image produces plot of the centered and cropped image data.
+        noise_map produces a noise map plot for the cropped image
         psf produces plot of the Point Spread Function.
         convolved produces plot of data from cropped image data and psf covolved.
         '''
 
+        self.outfilepath=outfilepath
+
         if cropped_image == True:
             plt.figure()
-            plt.imshow(self.hdul[1].data, cmap='gray', norm=LogNorm())
+            plt.imshow(self.image_data, cmap='gray', norm=LogNorm())
             plt.colorbar()
+            plt.title('Image', fontsize=20)
+            plt.savefig(self.outfilepath+'cropped_image.pdf', dpi=200)
             plt.show()
+            plt.clf()
         else:
             print('Plotting cropped image is turned off')
 
@@ -190,7 +227,30 @@ class data_reduction(object):
             plt.figure()
             plt.imshow(self.psf_data, cmap='gray', norm=LogNorm())
             plt.colorbar()
+            plt.title('PSF', fontsize=20)
+            plt.savefig(self.outfilepath+'psf.pdf', dpi=200)
             plt.show()
+            plt.clf()
+        else:
+            print('Plotting PSF is turned off')
+
+        if noise_map == True:
+            plt.figure()
+            plt.imshow(self.noise_map_data, cmap='gray', norm=LogNorm())
+            plt.colorbar()
+            plt.title('Noise Map', fontsize=20)
+            plt.savefig(self.outfilepath+'noise_map.pdf', dpi=200)
+            plt.show()
+            plt.clf()
+
+            #Plotting signal + noisemap
+            plt.figure()
+            plt.imshow(self.image_data+self.noise_map_data, cmap='gray', norm=LogNorm())
+            plt.colorbar()
+            plt.title('Signal+Noise', fontsize=20)
+            plt.savefig(self.outfilepath+'signal_plus_noise_map.pdf', dpi=200)
+            plt.show()
+            plt.clf()
         else:
             print('Plotting PSF is turned off')
 
@@ -198,6 +258,9 @@ class data_reduction(object):
             plt.figure()
             plt.imshow(self.convolved_data, cmap='gray', norm=LogNorm())
             plt.colorbar()
+            plt.title('Convoluted Image', fontsize=20)
+            plt.savefig(self.outfilepath+'convolve.pdf', dpi=200)
+            plt.show()
             plt.show()
         else:
             print('Plotting convolved image is turned off')
