@@ -28,12 +28,18 @@ imaging = al.Imaging.from_fits(
     image_path=path.join(dataset_path, "image.fits"),
     noise_map_path=path.join(dataset_path, "noise_map.fits"),
     psf_path=path.join(dataset_path, "psf.fits"),
-    pixel_scales=0.1,
+    pixel_scales=0.05,
 )
 
-mask = al.Mask2D.circular(
-    shape_native=imaging.shape_native, pixel_scales=imaging.pixel_scales, radius=3.0
+mask = al.Mask2D.circular_annular(
+    shape_native=imaging.shape_native,
+    pixel_scales=imaging.pixel_scales,
+    inner_radius=0.25,
+    outer_radius=1.6,
 )
+#mask = al.Mask2D.circular(
+#    shape_native=imaging.shape_native, pixel_scales=imaging.pixel_scales, radius=3.0
+#)
 
 imaging = imaging.apply_mask(mask=mask)
 
@@ -76,14 +82,32 @@ model = af.Collection(
     )
 )
 
+"""
+Positions taken from positons.json file
+"""
+
+positions = al.Grid2DIrregular.from_json(
+    file_path=path.join(workspace_path, "Akanksha", "slacs_new","slacs0252+0039", "positions.json")
+)
+
+visuals_2d = aplt.Visuals2D(positions=positions)
+
+imaging_plotter = aplt.ImagingPlotter(imaging=imaging, visuals_2d=visuals_2d)
+imaging_plotter.subplot_imaging()
+
+settings_lens = al.SettingsLens(positions_threshold=1.0)
+
 search = af.DynestyStatic(
     path_prefix=path_prefix,
-    name="search[1]_light[parametric]",
+    name="search_1_EllSersic",
     unique_tag='SLACS1',
     nlive=50,
 )
 
-analysis = al.AnalysisImaging(dataset=imaging)
+#analysis = al.AnalysisImaging(dataset=imaging)
+analysis = al.AnalysisImaging(
+    dataset=imaging, positions=positions, settings_lens=settings_lens
+)
 
 result_1 = search.fit(model=model, analysis=analysis)
 
@@ -111,7 +135,7 @@ NOTES:
 """
 bulge = result_1.instance.galaxies.lens.bulge
 
-dark = af.Model(al.mp.EllNFWMCRLudlow)
+dark = af.Model(al.mp.SphNFW)
 dark.centre = bulge.centre
 dark.mass_at_200 = af.LogUniformPrior(lower_limit=1e8, upper_limit=1e15)
 dark.redshift_object = redshift_lens
@@ -121,18 +145,18 @@ model = af.Collection(
     galaxies=af.Collection(
         lens=af.Model(
             al.Galaxy,
-            redshift=0.5,
+            redshift=redshift_lens,
             bulge=bulge,
-            dark=af.Model(al.mp.EllNFW),
+            dark=af.Model(al.mp.SphNFW),
             shear=al.mp.ExternalShear,
         ),
-        source=af.Model(al.Galaxy, redshift=1.0, bulge=al.lp.EllSersic),
+        source=af.Model(al.Galaxy, redshift=redshift_source, bulge=al.lp.EllSersic),
     )
 )
 
 search = af.DynestyStatic(
     path_prefix=path_prefix,
-    name="search[2]_light[fixed]_mass[light_dark]_source[parametric]",
+    name="search_2_SphNFW",
     unique_tag=dataset_name,
     nlive=75,
 )
@@ -171,25 +195,28 @@ model = af.Collection(
     galaxies=af.Collection(
         lens=af.Model(
             al.Galaxy,
-            redshift=0.5,
+            redshift=redshift_lens,
             bulge=bulge,
             dark=dark,
             shear=result_2.model.galaxies.lens.shear,
         ),
         source=af.Model(
-            al.Galaxy, redshift=1.0, bulge=result_2.model.galaxies.source.bulge
+            al.Galaxy, redshift=redshift_source, bulge=result_2.model.galaxies.source.bulge
         ),
     )
 )
 
 search = af.DynestyStatic(
     path_prefix=path_prefix,
-    name="search[3]_light[parametric]_mass[light_dark]_source[parametric]",
+    name="search_3_EllSersic",
     unique_tag=dataset_name,
     nlive=75,
 )
 
-analysis = al.AnalysisImaging(dataset=imaging)
+#analysis = al.AnalysisImaging(dataset=imaging)
+analysis = al.AnalysisImaging(
+    dataset=imaging, positions=positions, settings_lens=settings_lens
+)
 
 result_3 = search.fit(model=model, analysis=analysis)
 
