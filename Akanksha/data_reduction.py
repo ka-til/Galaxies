@@ -188,12 +188,12 @@ class data_reduction(object):
         self.hdul.writeto(outfilepath + self.filename + '_cropped_convolved.fits',overwrite=True)
 
         hdu_image = fits.PrimaryHDU(data=self.image_data)
-        hdu_image.writeto(outfilepath+'imaging.fits')
+        hdu_image.writeto(outfilepath+'image.fits')
 
         hdu_noise = fits.PrimaryHDU(data=self.noise_map_data)
         hdu_noise.writeto(outfilepath+'noise_map.fits')
 
-        hdu_psf = fits.PrimaryHDU(data=self.psf_data)
+        hdu_psf = fits.PrimaryHDU(data=self.psf_data[0:73, 0:73])
         hdu_psf.writeto(outfilepath+'psf.fits')
 
         self.hdul.close()

@@ -161,7 +161,11 @@ search = af.DynestyStatic(
     nlive=75,
 )
 
-analysis = al.AnalysisImaging(dataset=imaging)
+#analysis = al.AnalysisImaging(dataset=imaging)
+
+analysis = al.AnalysisImaging(
+    dataset=imaging, positions=positions, settings_lens=settings_lens
+)
 
 result_2 = search.fit(model=model, analysis=analysis)
 
